@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ffavetta <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/21 19:29:56 by ffavetta          #+#    #+#             */
+/*   Updated: 2024/09/21 19:30:05 by ffavetta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	fill_ok(int (*okv)[2]);
-int	set(int *views, int (*okviews)[2], int *map, int pos);
+int		set(int *views, int (*okviews)[2], int *map, int pos);
 
 // Check prog param for errors & fill in 2D tab with expected view numbers
 int	param(int argc, char **argv, int *views)
@@ -56,4 +68,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-

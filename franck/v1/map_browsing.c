@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_browsing.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ffavetta <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/21 19:30:20 by ffavetta          #+#    #+#             */
+/*   Updated: 2024/09/21 19:30:23 by ffavetta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 int	chk_map(int *map, int *maptr, int *views, int (*okviews)[2]);
 
 void	put_map(int *map)
 {
-	int	col;
-	int	row;
-	char c;
+	int		col;
+	int		row;
+	char	c;
 
 	row = -1;
 	while (++row < 4)
@@ -50,4 +62,3 @@ int	set(int *views, int (*okviews)[2], int *map, int pos)
 	}
 	return (0);
 }
-

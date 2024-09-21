@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_checking.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ffavetta <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/21 19:30:38 by ffavetta          #+#    #+#             */
+/*   Updated: 2024/09/21 19:30:44 by ffavetta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 // Fills in index for further checking of one row
 // row key = base 5 number of the row
 // method: "handmade", better replace this by an algo
@@ -35,23 +47,22 @@ int	chk_row(int *row, int left, int right, int (*okviews)[2])
 {
 	int	key;
 
-	if(row[0] == 0 || row[1] == 0 || row[2] == 0 || row[3] == 0)
+	if (row[0] == 0 || row[1] == 0 || row[2] == 0 || row[3] == 0)
 		return (1);
 	key = row[0] * 125 + row[1] * 25 + row[2] * 5 + row[3];
-	if(okviews[key][0] != left || okviews[key][1] != right)
+	if (okviews[key][0] != left || okviews[key][1] != right)
 		return (0);
 	return (1);
 }
 
 int	chk_map(int *map, int *maptr, int *views, int (*okviews)[2])
 {
-	return (chk_row(map + 0, views[8], views[12], okviews) &&
-		chk_row(map + 4, views[9], views[13], okviews) &&
-		chk_row(map + 8, views[10], views[14], okviews) &&
-		chk_row(map + 12, views[11], views[15], okviews) &&
-		chk_row(maptr + 0, views[0], views[4], okviews) &&
-		chk_row(maptr + 4, views[1], views[5], okviews) &&
-		chk_row(maptr + 8, views[2], views[6], okviews) &&
-		chk_row(maptr + 12, views[3], views[7], okviews));
+	return (chk_row(map + 0, views[8], views[12], okviews)
+		&& chk_row(map + 4, views[9], views[13], okviews)
+		&& chk_row(map + 8, views[10], views[14], okviews)
+		&& chk_row(map + 12, views[11], views[15], okviews)
+		&& chk_row(maptr + 0, views[0], views[4], okviews)
+		&& chk_row(maptr + 4, views[1], views[5], okviews)
+		&& chk_row(maptr + 8, views[2], views[6], okviews)
+		&& chk_row(maptr + 12, views[3], views[7], okviews));
 }
-
