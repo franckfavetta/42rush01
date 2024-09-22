@@ -1,11 +1,12 @@
-// Skycrapers Puzzle - Piscine42-2024/9
+// Skycrapers puzzle - Piscine42-2024/9 - ffavetta/adecout/dvalenza
 //   - Coding method: 
 //      - A) Check incoming parameters
 //           Return error codes:
 //              Err1) No arguments or too many
 //              Err2) Argument string too long or too short
-//              Err3) Error in view numbers
-//              Err4) No solution found
+//              Err3) Wrong view numbers separator
+//              Err4) Error in view numbers
+//              Err5) No solution found
 //      - B) Create a 2D tab index for expected view numbers 
 //           (extracted from parameters)
 //             row key -> value left 

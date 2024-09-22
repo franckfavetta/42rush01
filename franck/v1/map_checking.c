@@ -12,7 +12,9 @@
 
 // Fills in index for further checking of one row
 // row key = base 5 number of the row
-// method: "handmade", better replace this by an algo
+// -> row value[0] = left view
+// -> row value[1] = right view
+// Method: "handmade", better replace this by an algo
 void	fill_ok(int (*okv)[2])
 {
 	char	*cb;
@@ -43,7 +45,7 @@ void	fill_ok(int (*okv)[2])
 }
 
 // Checks if expected left & rgh match this row thanks to index okviews 
-int	chk_row(int *row, int left, int right, int (*okviews)[2])
+int	check_row(int *row, int left, int right, int (*okviews)[2])
 {
 	int	key;
 
@@ -55,14 +57,19 @@ int	chk_row(int *row, int left, int right, int (*okviews)[2])
 	return (1);
 }
 
-int	chk_map(int *map, int *maptr, int *views, int (*okviews)[2])
+//Views tab order:
+//   0)col1up     1)col2up    2)col3up      3)col4up 
+//   4)col1down   5)col2down  6)col3down    7)col4down 
+//   8)row1left   9)row2left  10)row3left  11)row4left
+//  12)row1right 13)row2right 14)row3right 15)row4right
+int	check_map(int *map, int *maptr, int *views, int (*okviews)[2])
 {
-	return (chk_row(map + 0, views[8], views[12], okviews)
-		&& chk_row(map + 4, views[9], views[13], okviews)
-		&& chk_row(map + 8, views[10], views[14], okviews)
-		&& chk_row(map + 12, views[11], views[15], okviews)
-		&& chk_row(maptr + 0, views[0], views[4], okviews)
-		&& chk_row(maptr + 4, views[1], views[5], okviews)
-		&& chk_row(maptr + 8, views[2], views[6], okviews)
-		&& chk_row(maptr + 12, views[3], views[7], okviews));
+	return (check_row(map + 0, views[8], views[12], okviews)
+		&& check_row(map + 4, views[9], views[13], okviews)
+		&& check_row(map + 8, views[10], views[14], okviews)
+		&& check_row(map + 12, views[11], views[15], okviews)
+		&& check_row(maptr + 0, views[0], views[4], okviews)
+		&& check_row(maptr + 4, views[1], views[5], okviews)
+		&& check_row(maptr + 8, views[2], views[6], okviews)
+		&& check_row(maptr + 12, views[3], views[7], okviews));
 }

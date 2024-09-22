@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-int	chk_map(int *map, int *maptr, int *views, int (*okviews)[2]);
+int	check_map(int *map, int *maptr, int *views, int (*okviews)[2]);
 
 void	put_map(int *map)
 {
@@ -35,7 +35,7 @@ void	put_map(int *map)
 
 //Sets recursively a new value, then checks the map
 //maptr = transposed map -> for easier checking (only row checking)
-int	set(int *views, int (*okviews)[2], int *map, int pos)
+int	set_one_on_map(int *views, int (*okviews)[2], int *map, int pos)
 {
 	int	i;
 	int	maptr[16];
@@ -54,8 +54,8 @@ int	set(int *views, int (*okviews)[2], int *map, int pos)
 		while (++i < 5)
 		{
 			map[pos] = i;
-			if (chk_map(map, maptr, views, okviews))
-				if (set(views, okviews, map, pos + 1))
+			if (check_map(map, maptr, views, okviews))
+				if (set_one_on_map(views, okviews, map, pos + 1))
 					return (1);
 		}
 		map[pos] = 0;
