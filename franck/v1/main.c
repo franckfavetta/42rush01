@@ -13,6 +13,7 @@
 #include <unistd.h>
 
 void	fill_ok(int (*okv)[2]);
+void	init_ok(int (*okviews)[2]);
 int		set_one_on_map(int *views, int (*okviews)[2], int *map, int pos);
 
 // Check prog param for errors & fill in 2D tab with expected view numbers
@@ -55,14 +56,16 @@ int	main(int argc, char **argv)
 	int	retp;
 	int	okviews[625][2];
 	int	map[16];
+	int	i;
 
 	retp = param(argc, argv, views);
 	if (retp == 0)
 	{
+		init_ok(okviews);
 		fill_ok(okviews);
-		retp = 0;
-		while (retp < 16)
-			map[retp++] = 0;
+		i = 0;
+		while (i < 16)
+			map[i++] = 0;
 		if (!set_one_on_map(views, okviews, map, 0))
 			write(1, "Error\n", 6);
 		return (5);

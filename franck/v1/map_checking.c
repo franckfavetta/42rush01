@@ -10,6 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+void	init_ok(int (*okviews)[2])
+{
+	int	i;
+
+	i = 0;
+	while (i < 624)
+	{
+		okviews[i++][0] = 0;
+		okviews[i++][1] = 0;
+	}
+}
+
 // Fills in index for further checking of one row
 // row key = base 5 number of the row
 // -> row value[0] = left view
@@ -51,7 +63,7 @@ int	check_row(int *row, int left, int right, int (*okviews)[2])
 
 	if (row[0] == 0 || row[1] == 0 || row[2] == 0 || row[3] == 0)
 		return (1);
-	key = row[0] * 125 + row[1] * 25 + row[2] * 5 + row[3];
+	key = row[0] * 125 + row[1] * 25 + row[2] * 5 + row[3] * 1;
 	if (okviews[key][0] != left || okviews[key][1] != right)
 		return (0);
 	return (1);

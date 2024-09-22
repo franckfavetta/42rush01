@@ -28,6 +28,8 @@ void	put_map(int *map)
 		{
 			c = map[row * 4 + col] + '0';
 			write(1, &c, 1);
+			if (col < 3)
+				write(1, " ", 1);
 		}
 		write(1, "\n", 1);
 	}
